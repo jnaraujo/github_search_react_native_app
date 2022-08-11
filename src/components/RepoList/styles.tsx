@@ -5,12 +5,13 @@ const styles = StyleSheet.create({
   list: {
     backgroundColor: 'transparent',
   },
-  repo: {
+  repoContainer: {
     backgroundColor: '#e9ecef',
     padding: 16,
     margin: 8,
     borderRadius: 8,
   },
+  repo: {},
   repoHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -64,20 +65,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#495057',
     fontSize: 16,
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 20,
-  },
-  emptyText: {
-    color: 'gray',
-    fontSize: 18,
-    marginVertical: 12,
-    lineHeight: 18 * 1.5,
-    textAlign: 'center',
-    maxWidth: '80%',
   },
 
   // loading

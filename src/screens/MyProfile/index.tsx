@@ -15,6 +15,7 @@ import styles from './styles';
 import {numberFormatter} from './utils';
 import {useConfig} from '../../hooks/useConfig';
 import RepoList from '../../components/RepoList';
+import {getUserProfile, getUserRepositories} from '../../services/UserService';
 
 interface IUserData {
   id: number;
@@ -57,9 +58,7 @@ function Profile() {
   };
 
   const handleRepoFetch = async (value: string) => {
-    return await fetch(`https://api.github.com/users/${value}/repos`).then(
-      res => res.json(),
-    );
+    return await getUserRepositories(value);
   };
 
   useEffect(() => {
@@ -67,15 +66,13 @@ function Profile() {
 
     if (username) {
       const timeout = setTimeout(() => {
-        fetch(`https://api.github.com/users/${username}`)
-          .then(res => res.json())
-          .then(data => {
-            setUserData(data);
-            handleRepoFetch(username).then(repoData => {
-              setRepos(repoData);
-              setLoading(false);
-            });
+        getUserProfile(username).then(data => {
+          setUserData(data);
+          handleRepoFetch(username).then(repoData => {
+            setRepos(repoData);
+            setLoading(false);
           });
+        });
       }, 500);
 
       return () => clearTimeout(timeout);

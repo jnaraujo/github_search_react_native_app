@@ -51,22 +51,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  // empty
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 20,
-  },
-  emptyText: {
-    color: 'gray',
-    fontSize: 18,
-    marginVertical: 12,
-    lineHeight: 18 * 1.5,
-    textAlign: 'center',
-    maxWidth: '80%',
-  },
-
   // noProfile
   noProfileView: {
     flex: 1,

@@ -32,47 +32,47 @@ export default function RepoList({repos, loading}: IRepoListProps) {
             })
             .map(repo => {
               return (
-                <View key={repo.id} style={styles.repo}>
-                  <View style={styles.repoHeader}>
-                    <Text style={styles.repoTitle}>{repo.name}</Text>
-                    <View style={styles.repoHeaderStarView}>
-                      <Icon name="star" size={18} color="#8338ec" />
-                      <Text style={styles.repoHeaderStarCount}>
-                        {repo.stargazers_count}
-                      </Text>
+                <TouchableHighlight
+                  key={repo.id}
+                  style={styles.repoContainer}
+                  activeOpacity={1}
+                  underlayColor="#DDDDDD"
+                  onPress={async () => {
+                    if (await InAppBrowser.isAvailable()) {
+                      return InAppBrowser.open(repo.html_url, {
+                        showTitle: true,
+                        toolbarColor: '#8338ec',
+                        secondaryToolbarColor: 'black',
+                        navigationBarColor: 'black',
+                        navigationBarDividerColor: 'white',
+                        enableUrlBarHiding: true,
+                        enableDefaultShare: true,
+                        forceCloseOnRedirection: false,
+                      });
+                    } else {
+                      Linking.openURL(repo.html_url);
+                    }
+                  }}>
+                  <View style={styles.repo}>
+                    <View style={styles.repoHeader}>
+                      <Text style={styles.repoTitle}>{repo.name}</Text>
+                      <View style={styles.repoHeaderStarView}>
+                        <Icon name="star" size={18} color="#8338ec" />
+                        <Text style={styles.repoHeaderStarCount}>
+                          {repo.stargazers_count}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
 
-                  <Text
-                    numberOfLines={2}
-                    ellipsizeMode="tail"
-                    style={styles.repoDescription}>
-                    {repo.description ||
-                      'O amigo não colocou descrição. Muito feio!'}
-                  </Text>
-                  <TouchableHighlight
-                    style={styles.repoButton}
-                    activeOpacity={1}
-                    underlayColor="#DDDDDD"
-                    onPress={async () => {
-                      if (await InAppBrowser.isAvailable()) {
-                        return InAppBrowser.open(repo.html_url, {
-                          showTitle: true,
-                          toolbarColor: '#8338ec',
-                          secondaryToolbarColor: 'black',
-                          navigationBarColor: 'black',
-                          navigationBarDividerColor: 'white',
-                          enableUrlBarHiding: true,
-                          enableDefaultShare: true,
-                          forceCloseOnRedirection: false,
-                        });
-                      } else {
-                        Linking.openURL(repo.html_url);
-                      }
-                    }}>
-                    <Text style={styles.repoButtonText}>Abrir Repo</Text>
-                  </TouchableHighlight>
-                </View>
+                    <Text
+                      numberOfLines={2}
+                      ellipsizeMode="tail"
+                      style={styles.repoDescription}>
+                      {repo.description ||
+                        'O amigo não colocou descrição. Muito feio!'}
+                    </Text>
+                  </View>
+                </TouchableHighlight>
               );
             })
         ) : (
