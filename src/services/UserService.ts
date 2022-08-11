@@ -1,6 +1,6 @@
-export function searchRepositories(query: string) {
+export function searchUsers(value: string, limit: number) {
   return fetch(
-    `https://api.github.com/search/repositories?q=${query}&per_page=5`,
+    `https://api.github.com/search/users?q=${value}&per_page=${limit}`,
   )
     .then(response => response.json())
     .then(json => json.items);
@@ -12,8 +12,8 @@ export function getUserProfile(username: string) {
   );
 }
 
-export function getUserRepositories(username: string) {
+export function getUserRepositories(username: string, limit: number) {
   return fetch(
-    `https://api.github.com/users/${username}/repos?per_page=5`,
+    `https://api.github.com/users/${username}/repos?per_page=${limit}`,
   ).then(response => response.json());
 }

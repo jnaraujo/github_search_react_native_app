@@ -58,7 +58,7 @@ function Profile() {
   };
 
   const handleRepoFetch = async (value: string) => {
-    return await getUserRepositories(value);
+    return await getUserRepositories(value, 20);
   };
 
   useEffect(() => {

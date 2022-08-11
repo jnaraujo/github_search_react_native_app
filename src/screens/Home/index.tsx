@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import LoadingRepo from '../../components/LoadingRepo';
 import styles from './styles';
-import {searchRepositories} from '../../services/UserService';
+import {searchUsers} from '../../services/UserService';
 
 interface IUserData {
   login: string;
@@ -26,7 +26,7 @@ export default function Home(props: any) {
   const [users, setUsers] = useState<IUserData[]>([]);
 
   const handleFetch = async (value: string) => {
-    searchRepositories(value).then(response => {
+    searchUsers(value, 5).then(response => {
       setUsers(response || []);
     });
   };
