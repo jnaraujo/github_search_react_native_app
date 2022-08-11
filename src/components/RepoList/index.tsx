@@ -7,6 +7,7 @@ import InAppBrowser from 'react-native-inappbrowser-reborn';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';
+import {numberFormatter} from './utils';
 
 interface IRepos {
   id: number;
@@ -59,7 +60,7 @@ export default function RepoList({repos, loading}: IRepoListProps) {
                       <View style={styles.repoHeaderStarView}>
                         <Icon name="star" size={18} color="#8338ec" />
                         <Text style={styles.repoHeaderStarCount}>
-                          {repo.stargazers_count}
+                          {numberFormatter(repo.stargazers_count)}
                         </Text>
                       </View>
                     </View>
