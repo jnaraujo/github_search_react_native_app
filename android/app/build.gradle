@@ -227,16 +227,13 @@ android {
         }
         release {
             
-            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-                def Properties localProps = new Properties()
-                localProps.load(new FileInputStream(file('../gradle.local.properties')))
+            def Properties keyProps = new Properties()
+            keyProps.load(new FileInputStream(file('../gradle.local.properties')))
 
-                storeFile file(MYAPP_UPLOAD_STORE_FILE)
-
-                keyAlias MYAPP_UPLOAD_KEY_ALIAS
-                storePassword localProps["MYAPP_UPLOAD_STORE_PASSWORD"]
-                keyPassword localProps["MYAPP_UPLOAD_KEY_PASSWORD"]
-            }
+            storeFile file(keyProps["STORE_FILE"])
+            keyAlias keyProps["KEY_ALIAS"]
+            storePassword keyProps["STORE_PASSWORD"]
+            keyPassword keyProps["KEY_PASSWORD"]
         }
     }
     buildTypes {
