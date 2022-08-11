@@ -6,16 +6,8 @@ on:
     types: [published] # only run the workflow when a new release has been published
 
 jobs:
-  install-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install npm dependencies
-        run: |
-          npm install
   android-build:
     needs: install-and-test
-    runs-on: ubuntu-latest
 
     steps:
       - name: Check out Git repository # clone the repo to local ci workspace
