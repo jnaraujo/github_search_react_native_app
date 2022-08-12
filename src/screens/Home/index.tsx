@@ -57,7 +57,9 @@ export default function Home(props: any) {
           placeholderTextColor={'#6c757d'}
         />
       </View>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        keyboardShouldPersistTaps="always">
         <View style={styles.safeBackground}>
           {userValue === '' ? (
             <View style={styles.emptyContainer}>
