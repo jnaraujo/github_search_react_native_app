@@ -85,6 +85,7 @@ export default function ProfileHeader({
         image={profilePicture}
         onClose={() => setIsModalVisible(false)}
         isClosed={isModalVisible}
+        username={username}
       />
     </>
   );

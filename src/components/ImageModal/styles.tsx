@@ -62,6 +62,12 @@ const styles = StyleSheet.create({
     right: 8,
     backgroundColor: '#1b1b1b',
   },
+  buttonDownload: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 8,
+  },
 });
 
 export default styles;
