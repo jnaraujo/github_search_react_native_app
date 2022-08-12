@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Image,
   ScrollView,
   Text,
   TextInput,
@@ -8,14 +7,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-
 import styles from './styles';
 
-import {numberFormatter} from './utils';
 import {useConfig} from '../../hooks/useConfig';
-import RepoList from '../../components/RepoList';
+
 import {getUserProfile, getUserRepositories} from '../../services/UserService';
+
+import ProfileHeader from '../../components/ProfileHeader';
+import RepoList from '../../components/RepoList';
 
 interface IUserData {
   id: number;
@@ -84,50 +83,20 @@ function Profile() {
       {config?.profile?.name ? (
         <ScrollView contentInsetAdjustmentBehavior="automatic">
           <View style={styles.list}>
-            <View style={styles.header}>
-              <Image
-                source={{
-                  uri: userData?.avatar_url,
-                }}
-                style={styles.avatar}
-              />
-              <View style={styles.textInfoView}>
-                <View style={styles.userNameView}>
-                  <Text style={styles.username}>{config.profile.name}</Text>
-                  <Icon
-                    style={styles.editIcon}
-                    name="pencil"
-                    size={20}
-                    color="#6c757d"
-                    onPress={() => {
-                      setConfig({
-                        profile: {
-                          name: '',
-                        },
-                      });
-                    }}
-                  />
-                </View>
-                <Text numberOfLines={2} ellipsizeMode="tail" style={styles.bio}>
-                  {userData?.bio}
-                </Text>
-                <View style={styles.userFollow}>
-                  <Text style={styles.followNumber}>
-                    <Text style={styles.followBold}>
-                      {numberFormatter(userData?.followers || 0)}
-                    </Text>{' '}
-                    followers
-                  </Text>
-                  <Text style={styles.followNumber}>
-                    <Text style={styles.followBold}>
-                      {numberFormatter(userData?.following || 0)}
-                    </Text>{' '}
-                    following
-                  </Text>
-                </View>
-              </View>
-            </View>
-
+            <ProfileHeader
+              username={config.profile.name}
+              profilePicture={userData?.avatar_url || ''}
+              onEdit={() => {
+                setConfig({
+                  profile: {
+                    name: '',
+                  },
+                });
+              }}
+              bio={userData?.bio}
+              followers={userData?.followers || 0}
+              following={userData?.following || 0}
+            />
             <RepoList loading={loading} repos={repos} />
           </View>
         </ScrollView>

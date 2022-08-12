@@ -1,10 +1,10 @@
 import React, {memo, useEffect, useState} from 'react';
-import {Image, ScrollView, Text, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 
 import styles from './styles';
-import {numberFormatter} from './utils';
 import {getUserRepositories} from '../../services/UserService';
 import RepoList from '../../components/RepoList';
+import ProfileHeader from '../../components/ProfileHeader';
 
 interface IProfileProps {
   route?: {
@@ -68,35 +68,13 @@ function Profile(props: IProfileProps) {
     <View style={styles.main}>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={styles.list}>
-          <View style={styles.header}>
-            <Image
-              source={{
-                uri: userData?.avatar_url,
-              }}
-              style={styles.avatar}
-            />
-            <View style={styles.textInfoView}>
-              <Text style={styles.username}>{userData?.name}</Text>
-              <Text numberOfLines={2} ellipsizeMode="tail" style={styles.bio}>
-                {userData?.bio}
-              </Text>
-              <View style={styles.userFollow}>
-                <Text style={styles.followNumber}>
-                  <Text style={styles.followBold}>
-                    {numberFormatter(userData?.followers || 0)}
-                  </Text>{' '}
-                  followers
-                </Text>
-                <Text style={styles.followNumber}>
-                  <Text style={styles.followBold}>
-                    {numberFormatter(userData?.following || 0)}
-                  </Text>{' '}
-                  following
-                </Text>
-              </View>
-            </View>
-          </View>
-
+          <ProfileHeader
+            username={userData?.name || 'Sem nome'}
+            profilePicture={userData?.avatar_url || ''}
+            followers={userData?.followers || 0}
+            following={userData?.following || 0}
+            bio={userData?.bio}
+          />
           <RepoList loading={loading} repos={repos} />
         </View>
       </ScrollView>
