@@ -20,16 +20,19 @@ const MainTabNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+
         tabBarActiveTintColor: '#8338ec',
         tabBarInactiveTintColor: '#6c757d',
         tabBarStyle: {
           backgroundColor: '#1b263b',
           borderTopWidth: 0,
+          height: 60,
         },
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: '400',
           color: 'white',
+          paddingBottom: 4,
         },
       }}>
       <Tab.Screen
