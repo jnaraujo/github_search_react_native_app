@@ -1,4 +1,4 @@
-package com.awesometsproject.newarchitecture;
+package com.jnaraujo.awegithubsearchapp.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.awesometsproject.BuildConfig;
-import com.awesometsproject.newarchitecture.components.MainComponentsRegistry;
-import com.awesometsproject.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.jnaraujo.awegithubsearchapp.BuildConfig;
+import com.jnaraujo.awegithubsearchapp.newarchitecture.components.MainComponentsRegistry;
+import com.jnaraujo.awegithubsearchapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

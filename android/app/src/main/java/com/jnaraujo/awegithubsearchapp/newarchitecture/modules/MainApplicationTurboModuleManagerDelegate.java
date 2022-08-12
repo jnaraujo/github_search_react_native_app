@@ -1,4 +1,4 @@
-package com.awesometsproject.newarchitecture.modules;
+package com.jnaraujo.awegithubsearchapp.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
